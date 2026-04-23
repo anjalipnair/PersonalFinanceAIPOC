@@ -3,14 +3,20 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "start:test-server": "http-server -p 9005 ./test-server",
+    "setup:test-server": "mkdir -p test-server && echo '<!DOCTYPE html><html><head><title>Test App</title></head><body><h1>Unauthorised</h1><button>Log In</button><div id=\"auth-form\" style=\"display:none;\"><input type=\"text\" placeholder=\"Enter an ID: letters and numbers only, with hyphens allowed between characters.\" id=\"id-input\" /><button onclick=\"authenticate()\">Submit</button></div><script>document.querySelector(\"button\").onclick = () => { document.getElementById(\"auth-form\").style.display = \"block\"; }; function authenticate() { window.location.href = \"/dashboard\"; }</script></body></html>' > test-server/index.html"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
     "@playwright/test": "^1.59.1",
-    "@types/node": "^25.6.0"
+    "@types/node": "^25.6.0",
+    "http-server": "^14.1.1"
   },
   "directories": {
     "test": "tests"
